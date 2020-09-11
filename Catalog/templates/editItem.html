@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+            <main class="row body-row">
+                <div class="col-md-12">
+                    <h2>Edit Item ({{ curItem.name }})</h2>
+
+                    <form action="{{ url_for('editItem', category_name=curCategory.name, item_name=curItem.name)}}" method = 'post'>
+                        <dl class="font-md">
+                            <dt>Name:</dt>
+                            <dd><input type ='text' name='name' value='{{ curItem.name }}' class="stretch-textarea"></dd>
+                            <dt>Description:</dt>
+                            <dd><textarea name = 'description' rows='5' class="stretch-textarea">{{ curItem.description }}</textarea></dd>
+                            <dt>Category:</dt>
+                                {% for category in categories %}
+                                    {% if curItem.cat_id == category.id %}
+                                        <dd><input type ='radio' name='cat_name' value='{{ category.name }}' checked>{{ category.name }}</dd>
+                                    {% else %}
+                                        <dd><input type ='radio' name='cat_name' value='{{ category.name }}'>{{ category.name }}</dd>
+                                    {% endif %}
+                                {% endfor %}
+                        </dl>
+
+                        <input type="submit" value="Edit">
+                    </form>
+
+                    <form action="{{url_for('showMain')}}">
+                        <input type="submit" value="Cancel">
+                    </form>
+                </div>
+            </main>
+{% endblock %}
