@@ -22,4 +22,4 @@ Develop a web application that provides a list of items within a variety of cate
 - [Catalog App](http://catalog.youngwookbaek.com)
 
 ## Endpoints
-- Access `http://localhost:8000/catalog/<data>.json` where `<data>` can be `catalog`, `category`, `item`, or `user`
+- Access `http://catalog.youngwookbaek.com/<data>.json` where `<data>` can be `catalog`, `category`, `item`, or `user`
