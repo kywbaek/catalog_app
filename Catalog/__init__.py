@@ -72,7 +72,8 @@ def getUserID(email):
 @app.route('/gconnect', methods=['POST'])
 def gconnect():
     """ sign in with google account """
-    client_path = os.path.join(app.static_folder, 'g_client_secrets.json')
+    # client_path = os.path.join(app.static_folder, 'g_client_secrets.json')
+    client_path = "/home/ubuntu/documents/secrets/g_client_secrets.json"
     # Validate state token
     if request.args.get('state') != login_session['state']:
         response = make_response(json.dumps('Invalid state parameter.'), 401)
@@ -174,10 +175,12 @@ def fbconnect():
 
     # Exchange client token for long-lived server-side token
     # with GET / oauth / access_token /
-    id_path = os.path.join(app.static_folder, 'fb_client_secrets.json')
+    # id_path = os.path.join(app.static_folder, 'fb_client_secrets.json')
+    id_path = "/home/ubuntu/documents/secrets/fb_client_secrets.json"
     with open(id_path, 'r') as id_f:
 	app_id = json.loads(id_f.read())['web']['app_id']
-    secret_path = os.path.join(app.static_folder, 'fb_client_secrets.json')
+    # secret_path = os.path.join(app.static_folder, 'fb_client_secrets.json')
+    secret_path = "/home/ubuntu/documents/secrets/fb_client_secrets.json"
     with open(secret_path, 'r') as secret_f:
 	app_secret = json.loads(secret_f.read())['web']['app_secret']
 
